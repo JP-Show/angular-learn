@@ -1,16 +1,13 @@
 import { Component } from '@angular/core';
-import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
+import {MatFabButton} from '@angular/material/button'
+import { MatIcon } from '@angular/material/icon'
 
 @Component({
   selector: 'app-root',
-  imports: [LoginComponent, ProfileComponent],
+  imports: [MatFabButton, MatIcon],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'my-app';
-  newProperties:string = "Hello World"
-
-
+ 
 }

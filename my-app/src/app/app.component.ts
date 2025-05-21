@@ -12,19 +12,31 @@ import { DOCUMENT } from '@angular/common';
 })
 export class AppComponent {
   counter:number = 0;
+  isChecked = false
 
-  constructor(@Inject(DOCUMENT) private document: Document){}
+  // eu poderia colocar algo para salvar no localstorage
+  // a preferencia do light ou do dark mode
+  constructor(@Inject(DOCUMENT) private document: Document){
 
-  handleTheme(){
+    // let mode:string | null = localStorage.getItem("preferredMode")
+    // this.document.body.classList.toggle("")
+  }
 
-    console.log(this.document.body.classList.contains("lighter"))
+  handleTheme(isTrue:boolean){
 
-    if(this.document.body.classList.contains("lighter")){
+    /*
+    Se por acaso que quiser colocar um valor que altera quando clicar no botão.
+    Mas preciso saber qual é o valor padrão do switch button, se por acaso tiver
+    */
+
+    if(isTrue){
       this.document.body.classList.toggle("darker")
       this.document.body.classList.toggle("lighter")
+      localStorage.setItem("preferredMode", "darker")
     }else{
       this.document.body.classList.toggle("lighter")
       this.document.body.classList.toggle("darker")
+      localStorage.setItem("preferredMode", "lighter")
     }
     
   }

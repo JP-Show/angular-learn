@@ -1,12 +1,5 @@
 <div class="main">
-    <!-- @if(false){
-
-        <button [ngClass]="{:}" >HiddenButton</button>
-    } -->
-        
-    <!-- [(ngModel)]="isChecked" -->
-
-    <app-switch-theme-button (click)="handleTheme()" ></app-switch-theme-button>
+    <app-switch-theme-button (checkedChange)="handleTheme($event)" > </app-switch-theme-button>
 
     <h1>TIME COUNTER</h1>
     

@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { FormsModule } from '@angular/forms';
+import { LocalStorageService } from '../services/local-storage.service';
 
 
 type Theme = 'lighter' | "darker"
@@ -25,7 +26,15 @@ export class SwitchThemeButtonComponent extends FormsModule{
   @Output()
   checkedChange = new EventEmitter<boolean>();
 
+  constructor(private storage: LocalStorageService){
+    super()
+    const theme:string | null = this.storage.get("preferredMode")
+      if(theme != null)
+    this.isChecked = theme == "lighter" ? true : false
+  }
+  
   emitChecked(){
+    
     this.checkedChange.emit(this.isChecked)
   }
 
@@ -36,5 +45,6 @@ export class SwitchThemeButtonComponent extends FormsModule{
       this.element.nativeElement.querySelector('.mdc-switch__icon--on').firstChild.setAttribute('d', this.icon1);
       this.element.nativeElement.querySelector('.mdc-switch__icon--off').firstChild.setAttribute('d', this.icon2 );
     }
+
   }
 }
